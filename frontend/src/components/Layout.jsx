@@ -45,7 +45,7 @@ const Header = () => {
                 );
               })}
             </div>
-            <button onClick={() => { navigate(`/profile/${user?.id}`) }} className="flex-shrink-0">
+            <button onClick={() => { navigate(`/profile/${user?._id}`) }} className="flex-shrink-0">
               <img
                 src={
                   user.profilePhoto
@@ -67,6 +67,8 @@ const Header = () => {
 const Footer = () => {
   const location = useLocation();
   const { user } = useAuth();
+  console.log(user);
+  
 
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
 
@@ -74,7 +76,7 @@ const Footer = () => {
     { path: '/feed', icon: Home, label: 'Feed' },
     { path: '/explore', icon: Compass, label: 'Explore' },
     { path: '/search', icon: Search, label: 'Search' },
-    { path: `/profile/${user?.id}`, icon: User, label: 'Profile' },
+    { path: `/profile/${user?._id}`, icon: User, label: 'Profile' },
   ];
 
   return (

@@ -98,7 +98,7 @@ router.post(
         message: 'Login successful',
         token,
         user: {
-          id: user._id,
+          _id: user._id,
           email: user.email,
           username: user.username,
           name: user.name,
