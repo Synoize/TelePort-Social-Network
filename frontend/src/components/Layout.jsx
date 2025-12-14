@@ -4,7 +4,7 @@ import { Home, Search, Compass, User } from 'lucide-react';
 import { assets } from '../assets/assets.js';
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, PLATFORM_URL } = useAuth();
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
@@ -45,7 +45,7 @@ const Header = () => {
                 );
               })}
             </div>
-            <button onClick={() => { navigate(`/profile/${user?._id}`) }} className="flex-shrink-0">
+            <button onClick={() => { navigate(`/profile/${user?.id}`) }} className="flex-shrink-0">
               <img
                 src={
                   user.profilePhoto
