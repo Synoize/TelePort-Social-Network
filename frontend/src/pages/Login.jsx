@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import axios from 'axios';
 import { Mail, Lock, User } from 'lucide-react';
 import { assets } from '../assets/assets.js';
+import ButtonLoader from '../components/ButtonLoader.jsx';
 
 const Login = () => {
   const [email, setEmail] = useState('');

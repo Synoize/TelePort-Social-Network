@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const clorsOption = {
-    origin: ["http://localhost:3000", "https://teleport-social-network.vercel.app"],
+    origin: ["http://localhost:5173", "https://teleport-social-network.vercel.app"],
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 };

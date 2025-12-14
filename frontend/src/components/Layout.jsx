@@ -8,13 +8,12 @@ const Header = () => {
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const navItems = [
     { path: '/feed', icon: Home, label: 'Feed' },
     { path: '/explore', icon: Compass, label: 'Explore' },
     { path: '/search', icon: Search, label: 'Search' },
-    { path: `/profile/${user?._id}`, icon: User, label: 'Profile' },
   ];
 
   return (
@@ -27,36 +26,38 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-colors ${isActive(item.path)
-                    ? 'text-primary-pink'
-                    : 'text-gray-700'
-                    }`}
-                >
-                  <Icon className={`w-4 h-4`} />
-                  <p className='text-sm'>{item.label}</p>
-                </Link>
-              );
-            })}
+          <div className='flex gap-4'>
+            <div className="hidden md:flex items-center gap-4">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-colors ${isActive(item.path)
+                      ? 'text-primary-pink'
+                      : 'text-gray-700'
+                      }`}
+                  >
+                    <Icon className={`w-4 h-4`} />
+                    <p className='text-sm'>{item.label}</p>
+                  </Link>
+                );
+              })}
+            </div>
+            <button onClick={() => { navigate(`/profile/${user?._id}`) }} className="flex-shrink-0">
+              <img
+                src={
+                  user.profilePhoto
+                    ? `${PLATFORM_URL}${user.profilePhoto}`
+                    : `https://ui-avatars.com/api/?name=${user.username}&background=random`
+                }
+                alt={user.username}
+                className="w-10 h-10 rounded-full object-cover border-2 border-gray-200"
+              />
+            </button>
           </div>
 
-          <button onClick={() => {navigate(`/profile/${user?._id}`)}} className="flex-shrink-0">
-            <img
-              src={
-                user.profilePhoto
-                  ? `${PLATFORM_URL}${user.profilePhoto}`
-                  : `https://ui-avatars.com/api/?name=${user.username}&background=random`
-              }
-              alt={user.username}
-              className="w-10 h-10 rounded-full object-cover border-2 border-gray-200"
-            />
-          </button>
         </div>
       </div>
     </header>
