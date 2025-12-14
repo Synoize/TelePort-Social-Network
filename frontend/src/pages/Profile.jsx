@@ -138,14 +138,19 @@ const Profile = () => {
                       </Link>
                     )}
                   </div>
-                  <button
-                    onClick={() => {
-                      setConfirmLogout(true);
-                    }}
-                    className="px-4 py-1.5 bg-red-600/90 hover:bg-red-600 text-white rounded text-sm"
-                  >
-                    Logout
-                  </button>
+                  {
+                    isOwnProfile && (
+                      <button
+                        onClick={() => {
+                          setConfirmLogout(true);
+                        }}
+                        className="px-4 py-1.5 bg-red-600/90 hover:bg-red-600 text-white rounded text-sm"
+                      >
+                        Logout
+                      </button>
+                    )
+                  }
+
                 </div>
                 {confirmLogout && <ConfirmLogout trigger={{ setConfirmLogout }} />}
               </div>
