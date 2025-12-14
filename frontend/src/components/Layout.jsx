@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { Home, Search, Compass, User } from 'lucide-react';
 import { assets } from '../assets/assets.js';
@@ -8,6 +8,7 @@ const Header = () => {
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
+   const navigate = useNavigate();
 
   const navItems = [
     { path: '/feed', icon: Home, label: 'Feed' },
@@ -45,17 +46,17 @@ const Header = () => {
             })}
           </div>
 
-          <div className="flex-shrink-0">
+          <button onClick={() => {navigate(`/profile/${user?._id}`)}} className="flex-shrink-0">
             <img
               src={
-                profileUser.profilePhoto
-                  ? `${PLATFORM_URL}${profileUser.profilePhoto}`
-                  : `https://ui-avatars.com/api/?name=${profileUser.username}&background=random`
+                user.profilePhoto
+                  ? `${PLATFORM_URL}${user.profilePhoto}`
+                  : `https://ui-avatars.com/api/?name=${user.username}&background=random`
               }
-              alt={profileUser.username}
-              className="w-20 h-20 sm:w-32 sm:h-32 rounded-full object-cover border-2 border-gray-200"
+              alt={user.username}
+              className="w-10 h-10 rounded-full object-cover border-2 border-gray-200"
             />
-          </div>
+          </button>
         </div>
       </div>
     </header>
