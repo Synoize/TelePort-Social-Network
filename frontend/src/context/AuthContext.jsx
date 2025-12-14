@@ -31,7 +31,7 @@ axios.interceptors.request.use(
 );
 
 export const AuthProvider = ({ children }) => {
-  const PLATFORM_URL = import.meta.env.PLATFORM_URL || 'http://localhost:5000';
+  const PLATFORM_URL = import.meta.env.VITE_PLATFORM_URL || 'http://localhost:5000';
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
