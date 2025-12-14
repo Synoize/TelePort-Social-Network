@@ -10,7 +10,7 @@ import ConfirmLogout from '../components/ConfirmLogout.jsx';
 
 const Profile = () => {
   const { userId } = useParams();
-  const { user: currentUser, fetchUser, PLATFORM_URL } = useAuth();
+  const { user, fetchUser, PLATFORM_URL } = useAuth();
   const [profileUser, setProfileUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFollowing, setIsFollowing] = useState(false);
@@ -18,21 +18,18 @@ const Profile = () => {
   const [activeTab, setActiveTab] = useState('posts');
   const [confirmLogout, setConfirmLogout] = useState(false);
 
-  console.log("isFollowing", isFollowing);
-  
-
   useEffect(() => {
     fetchProfile();
     fetchUserPosts();
   }, [userId]);
 
   useEffect(() => {
-    if (profileUser && currentUser) {
+    if (profileUser && user) {
       setIsFollowing(
-        currentUser.following?.some((id) => id.toString() === profileUser._id.toString())
+        user.following?.some((_id) => _id.toString() === profileUser._id.toString())
       );
     }
-  }, [profileUser, currentUser]);
+  }, [profileUser, user]);
 
   const fetchProfile = async () => {
     try {
@@ -84,7 +81,7 @@ const Profile = () => {
     return <div className="text-center mt-8 text-gray-500">User not found</div>;
   }
 
-  const isOwnProfile = currentUser?._id === profileUser._id;
+  const isOwnProfile = user?._id === profileUser._id;
 
   return (
     <div className="max-w-4xl mx-auto w-full px-0 md:px-4 md:py-6">

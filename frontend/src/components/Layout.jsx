@@ -67,8 +67,6 @@ const Header = () => {
 const Footer = () => {
   const location = useLocation();
   const { user } = useAuth();
-  console.log(user);
-  
 
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
 
