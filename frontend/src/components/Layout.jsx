@@ -74,7 +74,7 @@ const Footer = () => {
     { path: '/feed', icon: Home, label: 'Feed' },
     { path: '/explore', icon: Compass, label: 'Explore' },
     { path: '/search', icon: Search, label: 'Search' },
-    { path: `/profile/${user?._id}`, icon: User, label: 'Profile' },
+    { path: `/profile/${user?.id}`, icon: User, label: 'Profile' },
   ];
 
   return (

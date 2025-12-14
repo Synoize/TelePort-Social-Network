@@ -93,7 +93,7 @@ const Profile = () => {
             <div className="flex-shrink-0">
               <img
                 src={
-                  profileUser.profilePhoto
+                  profileUser?.profilePhoto
                     ? `${PLATFORM_URL}${profileUser.profilePhoto}`
                     : `https://ui-avatars.com/api/?name=${profileUser.username}&background=random`
                 }
