@@ -18,6 +18,9 @@ const Profile = () => {
   const [activeTab, setActiveTab] = useState('posts');
   const [confirmLogout, setConfirmLogout] = useState(false);
 
+  console.log("isFollowing", isFollowing);
+  
+
   useEffect(() => {
     fetchProfile();
     fetchUserPosts();
