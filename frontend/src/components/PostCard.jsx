@@ -8,6 +8,9 @@ import { Heart, MessageCircle, MoreVertical, Trash2, Edit, Send, Bookmark } from
 const PostCard = ({ post, onPostDeleted, onPostUpdated }) => {
   const { user, PLATFORM_URL } = useAuth();
 
+  console.log("PLATFORM_URL: ", PLATFORM_URL);
+  
+
   const [isLiked, setIsLiked] = useState(
     post.likes?.some((like) => like._id?.toString() === user?._id?.toString()) || false
   );
