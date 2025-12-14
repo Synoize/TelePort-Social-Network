@@ -19,9 +19,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+const clorsOption = {
+    origin: ["http://localhost:3000", "https://teleport.vercel.app"],
+    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+    credentials: true,
+};
 
 // Middleware
-app.use(cors());
+app.use(cors(clorsOption));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -37,8 +42,8 @@ app.use('/api/follow', followRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/explore', exploreRoutes);
 
-// Health check
-app.get('/api/health', (req, res) => {
+// test server
+app.get('/', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
