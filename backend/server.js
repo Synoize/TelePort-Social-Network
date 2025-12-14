@@ -63,7 +63,7 @@ app.use((req, res) => {
 // Connect to MongoDB
 console.log('Database Connecting...');
 mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/atives-world')
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/telePort')
   .then(() => {
     console.log('Database Connected');
     const PORT = process.env.PORT || 5000;
